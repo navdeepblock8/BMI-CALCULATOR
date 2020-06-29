@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'inputpage.dart';
+import './pages/inputpage.dart';
 void main() {
   runApp(BMICAL());
 

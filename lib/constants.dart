@@ -10,3 +10,11 @@ const knumberStyle = TextStyle(
   fontSize: 60.0,
   fontWeight: FontWeight.bold,
 );
+const kbuttonTextStyle = TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.w600
+);
+const ktitlestyle = TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.w600,
+);

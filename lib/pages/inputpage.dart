@@ -1,9 +1,12 @@
+import '../pages/resultpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
+import 'package:bmicalculator/components/icon_content.dart';
+import 'package:bmicalculator/components/reusable_card.dart';
+import '../constants.dart';
+import '../components/bottomButton.dart';
+import '../calculations.dart';
 enum Gender {
   male,
   female
@@ -105,9 +108,21 @@ class _InputPageState extends State<InputPage> {
                           'Weight',
                           style: kiconTextStyle,
                         ),
-                        Text(
-                          userweight.toString(),
-                          style: knumberStyle,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(
+                            userweight.toString(),
+                            style: knumberStyle,
+                          ),
+                            Text(
+                              'Kg',
+                              style: kiconTextStyle,
+
+                            )
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -183,11 +198,16 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
+          bottomButton(buttonLabel: 'CALCULATE',ontap: (){
+            Calculatorbrain calc = Calculatorbrain(height:userheight,weight:userweight);
+
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultPage(bmiresult: calc.calculateBmi(),result: calc.getResult(),moreresult: calc.getmoreResult(),)));},)
         ],
       ),
     );
   }
 }
+
 
 class RoundIconButton extends StatelessWidget {
   RoundIconButton({@required this.icon, @required this.onpress});
